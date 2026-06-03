@@ -1,0 +1,23 @@
+name: "EdgeMail Send"
+description: "Send an email from any GitHub workflow (deploy notices, CI alerts, digests)."
+branding: { icon: "mail", color: "purple" }
+inputs:
+  api_key:   { description: "EdgeMailAPI key (em_ or ema_)", required: true }
+  to:        { description: "Recipient email", required: true }
+  subject:   { description: "Subject", required: true }
+  text:      { description: "Plain-text body", required: false }
+  html:      { description: "HTML body", required: false }
+  from:      { description: "Sender domain", required: false }
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: |
+        curl -fsS -X POST https://api.edgemailapi.com/api/send \
+          -H "Authorization: Bearer ${{ inputs.api_key }}" \
+          -H "Content-Type: application/json" \
+          -H "Idempotency-Key: gh-${{ github.run_id }}-${{ github.run_attempt }}" \
+          -d "$(jq -nc \
+            --arg to "${{ inputs.to }}" --arg s "${{ inputs.subject }}" \
+            --arg t "${{ inputs.text }}" --arg h "${{ inputs.html }}" --arg f "${{ inputs.from }}" \
+            '{to:$to, subject:$s} + (if $t!="" then {text:$t} else {} end) + (if $h!="" then {html:$h} else {} end) + (if $f!="" then {from_domain:$f} else {} end)')"
