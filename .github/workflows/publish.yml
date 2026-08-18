@@ -1,0 +1,50 @@
+name: Publish EdgeMail SDK
+
+on:
+  push:
+    tags:
+      - "sdk-v*"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    name: Validate and publish SDK package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@adamfrankwoodward-tech"
+      - name: Validate package contract
+        shell: bash
+        run: |
+          npm test
+          PACK_JSON="$(npm pack --dry-run --json --ignore-scripts)"
+          node -e 'const m=require("./package.json"); const p=JSON.parse(process.argv[1])[0]; const files=new Set((p.files||[]).map(x=>x.path)); const required=["package.json","index.js","bin/cli.js","action.yml","README.md","LICENSE"]; if(p.name!==m.name||p.version!==m.version) throw new Error("package identity mismatch"); if(required.some(x=>!files.has(x))) throw new Error("package artifact is missing a required file"); if([...files].some(x=>/(?:test|\\.env|\\.tgz)/i.test(x))) throw new Error("package artifact contains a test, secret, or nested tarball"); console.log(`validated ${p.name}@${p.version} (${files.size} files)`)' "$PACK_JSON"
+      - name: Guard tag against package version
+        if: startsWith(github.ref, 'refs/tags/sdk-v')
+        shell: bash
+        run: |
+          VERSION="$(node -p "require('./package.json').version")"
+          EXPECTED_TAG="sdk-v${VERSION}"
+          if [[ "${GITHUB_REF_NAME}" != "${EXPECTED_TAG}" ]]; then
+            echo "Refusing to publish ${VERSION} from tag ${GITHUB_REF_NAME}; expected ${EXPECTED_TAG}."
+            exit 1
+          fi
+      - name: Publish if this version is not already present
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          VERSION="$(node -p "require('./package.json').version")"
+          if npm view "@adamfrankwoodward-tech/edgemailapi@${VERSION}" --registry https://npm.pkg.github.com >/dev/null 2>&1; then
+            echo "@adamfrankwoodward-tech/edgemailapi@${VERSION} is already published."
+            exit 0
+          fi
+          npm publish --registry https://npm.pkg.github.com
