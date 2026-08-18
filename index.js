@@ -341,6 +341,7 @@ export class EdgeMail {
   coldResumeCampaign(id, { idempotencyKey } = {}) { return this._retry("PATCH", `/api/cold/campaigns/${encodeURIComponent(id)}`, { status: "active" }, idempotencyKey); }
   coldArchiveCampaign(id, { idempotencyKey } = {}) { return this._retry("PATCH", `/api/cold/campaigns/${encodeURIComponent(id)}`, { status: "archived" }, idempotencyKey); }
   coldCampaignAnalytics(id, params = {}) { return this._query(`/api/cold/campaigns/${encodeURIComponent(id)}/analytics`, params); }
+  coldCampaignPulse(params = {}) { return this._query("/api/cold/pulse", params); }
   coldCampaignStatus(id) { return this.coldGetCampaign(id); }
   coldDiagnoseCampaign(id) { return this._req("GET", `/api/cold/campaigns/${encodeURIComponent(id)}/diagnose`); }
   coldExportCampaignActivity(id, params = {}) { return this._query(`/api/cold/campaigns/${encodeURIComponent(id)}/analytics/export`, params); }

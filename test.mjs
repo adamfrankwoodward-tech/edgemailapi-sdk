@@ -207,6 +207,11 @@ try {
   await em.coldCampaignStatus("camp/status");
   assert.equal(calls.at(-1).url, "https://api.edgemailapi.com/api/cold/campaigns/camp%2Fstatus");
 
+  await em.coldCampaignPulse({ days: 7 });
+  assert.equal(calls.at(-1).url, "https://api.edgemailapi.com/api/cold/pulse?days=7");
+  await em.coldCampaignPulse();
+  assert.equal(calls.at(-1).url, "https://api.edgemailapi.com/api/cold/pulse");
+
   await em.coldVerifyLeads(["good@example.com"]);
   assert.equal(calls.at(-1).url, "https://api.edgemailapi.com/api/cold/leads/verify");
   assert.equal(calls.at(-1).options.method, "POST");

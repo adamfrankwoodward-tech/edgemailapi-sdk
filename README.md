@@ -12,7 +12,7 @@ npm install @adamfrankwoodward-tech/edgemailapi
 
 GitHub Packages downloads currently require a classic GitHub token with the
 `read:packages` scope. Keep it in an environment variable and configure npm
-without putting the token in source control:
+without pasting it into source control:
 
 ```powershell
 $env:GITHUB_PACKAGES_TOKEN = "ghp_..."
@@ -153,6 +153,19 @@ Operational cold controls are also available without dropping to raw REST:
 `coldCampaignStatus(id)`, `coldStopLead(enrollmentId, { idempotencyKey })`, and
 `coldStopLeadsBulk(payload, { idempotencyKey })`. These controls preserve the
 same tenant-scoped retry behavior and stop/rollback protections used by MCP.
+
+For a workspace-level campaign snapshot, use the read-only aggregate pulse:
+
+```js
+const pulse = await em.coldCampaignPulse({ days: 7 });
+// pulse.campaigns, pulse.sent, pulse.delivered, pulse.replied, pulse.bounced
+```
+
+Omit `days` for all-time totals or pass an integer from 1 to 90. The response
+also includes a UTC `generated_at` timestamp and `metric_sources` labels so a
+report can be traced back to its tenant-scoped aggregate query. `delivered`
+means the connected provider accepted the message after queue dispatch; it is
+not inbox-placement proof. The call never enrolls, queues, or sends.
 
 Team operators can also use `getWorkspaceSettings`, `setWorkspaceSettings`,
 `setOutboundPause`, `listAgentKeys`, `createAgentKey`, and `updateAgentKey`,

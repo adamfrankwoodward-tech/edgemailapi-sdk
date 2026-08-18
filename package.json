@@ -1,7 +1,7 @@
 {
   "name": "@adamfrankwoodward-tech/edgemailapi",
   "publishConfig": { "registry": "https://npm.pkg.github.com" },
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Official EdgeMailAPI SDK + CLI — agent-native transactional email. Describe an email in plain English and send it.",
   "type": "module",
   "main": "index.js",
