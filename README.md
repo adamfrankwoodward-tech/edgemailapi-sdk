@@ -10,6 +10,18 @@ npm config set @adamfrankwoodward-tech:registry https://npm.pkg.github.com
 npm install @adamfrankwoodward-tech/edgemailapi
 ```
 
+GitHub Packages downloads currently require a classic GitHub token with the
+`read:packages` scope. Keep it in an environment variable and configure npm
+without putting the token in source control:
+
+```powershell
+$env:GITHUB_PACKAGES_TOKEN = "ghp_..."
+npm config set //npm.pkg.github.com/:_authToken $env:GITHUB_PACKAGES_TOKEN
+```
+
+The source release is public; package visibility can be changed separately in
+GitHub Package settings when a public, token-free install is desired.
+
 Releases are validated and published to GitHub Packages by the repository
 workflow when an `sdk-v*` tag is pushed. The package is intentionally not
 published by local test commands.
