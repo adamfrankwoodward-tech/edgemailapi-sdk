@@ -8,7 +8,7 @@
   "bin": { "edgemail": "bin/cli.js" },
   "author": "Adam Frank Woodward",
   "files": ["index.js", "bin/", "action.yml", "README.md", "LICENSE"],
-  "scripts": { "test": "node test.mjs" },
+  "scripts": { "test": "node test.mjs && node action.test.mjs" },
   "keywords": ["email", "transactional", "api", "ai", "agent", "mcp", "newsletter"],
   "license": "MIT",
   "homepage": "https://edgemailapi.com",

@@ -12,12 +12,19 @@ runs:
   using: "composite"
   steps:
     - shell: bash
+      env:
+        EDGEMAIL_API_KEY: ${{ inputs.api_key }}
+        EDGEMAIL_TO: ${{ inputs.to }}
+        EDGEMAIL_SUBJECT: ${{ inputs.subject }}
+        EDGEMAIL_TEXT: ${{ inputs.text }}
+        EDGEMAIL_HTML: ${{ inputs.html }}
+        EDGEMAIL_FROM: ${{ inputs.from }}
       run: |
         curl -fsS -X POST https://api.edgemailapi.com/api/send \
-          -H "Authorization: Bearer ${{ inputs.api_key }}" \
+          -H "Authorization: Bearer $EDGEMAIL_API_KEY" \
           -H "Content-Type: application/json" \
-          -H "Idempotency-Key: gh-${{ github.run_id }}-${{ github.run_attempt }}" \
+          -H "Idempotency-Key: gh-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
           -d "$(jq -nc \
-            --arg to "${{ inputs.to }}" --arg s "${{ inputs.subject }}" \
-            --arg t "${{ inputs.text }}" --arg h "${{ inputs.html }}" --arg f "${{ inputs.from }}" \
+            --arg to "$EDGEMAIL_TO" --arg s "$EDGEMAIL_SUBJECT" \
+            --arg t "$EDGEMAIL_TEXT" --arg h "$EDGEMAIL_HTML" --arg f "$EDGEMAIL_FROM" \
             '{to:$to, subject:$s} + (if $t!="" then {text:$t} else {} end) + (if $h!="" then {html:$h} else {} end) + (if $f!="" then {from_domain:$f} else {} end)')"
