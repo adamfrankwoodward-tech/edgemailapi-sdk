@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Epoxy Co. — Floors engineered like glass</title>
+  <meta name="description" content="High-performance epoxy flooring for garages, commercial spaces, warehouses and kitchens. Seamless, durable, and built to look incredible." />
+  <meta name="theme-color" content="#07090d" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ---------- Design tokens ---------- */
+    :root {
+      --bg: #07090d;
+      --bg-2: #0b0f16;
+      --surface: rgba(255, 255, 255, 0.04);
+      --surface-strong: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.09);
+      --text: #e8eef6;
+      --muted: #8b97a8;
+      --accent: #22d3ee;
+      --accent-2: #8b5cf6;
+      --accent-3: #a3e635;
+      --grad: linear-gradient(135deg, var(--accent), var(--accent-2));
+      --radius: 18px;
+      --max: 1200px;
+      --font-display: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    :root[data-theme="light"] {
+        --bg: #f5f7fb;
+        --bg-2: #eaeef6;
+        --surface: rgba(10, 20, 40, 0.03);
+        --surface-strong: rgba(10, 20, 40, 0.06);
+        --border: rgba(10, 20, 40, 0.1);
+        --text: #0b1220;
+        --muted: #5b6678;
+      }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.1; margin: 0; letter-spacing: -0.02em; }
+    p { margin: 0; }
+    .container { width: min(100% - 32px, var(--max)); margin-inline: auto; }
+    section { position: relative; padding: clamp(72px, 10vw, 128px) 0; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-display); font-size: 13px; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
+    }
+    .eyebrow::before {
+      content: ""; width: 22px; height: 1px; background: var(--accent);
+    }
+    .section-head { max-width: 680px; margin-bottom: 56px; }
+    .section-head h2 { font-size: clamp(34px, 5vw, 56px); margin-top: 14px; }
+    .section-head p { color: var(--muted); margin-top: 16px; font-size: 18px; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 14px 24px; border-radius: 999px; border: 1px solid transparent;
+      font-family: var(--font-display); font-weight: 600; font-size: 15px;
+      cursor: pointer; transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .btn-primary {
+      background: var(--grad); color: #04060a;
+      box-shadow: 0 10px 40px -10px rgba(34, 211, 238, 0.55);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 50px -10px rgba(139, 92, 246, 0.6); }
+    .btn-ghost { border-color: var(--border); background: var(--surface); color: var(--text); }
+    .btn-ghost:hover { background: var(--surface-strong); transform: translateY(-2px); }
+    .btn:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible {
+      outline: 2px solid var(--accent); outline-offset: 3px;
+    }
+
+    /* ---------- Nav ---------- */
+    .nav {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      background: color-mix(in srgb, var(--bg) 70%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo { font-family: var(--font-display); font-weight: 700; font-size: 20px; letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px; }
+    .logo-mark {
+      width: 28px; height: 28px; border-radius: 8px; background: var(--grad);
+      position: relative; overflow: hidden;
+    }
+    .logo-mark::after {
+      content: ""; position: absolute; inset: -40%;
+      background: conic-gradient(from 0deg, transparent, rgba(255,255,255,.6), transparent 40%);
+      animation: spin 4s linear infinite;
+    }
+    .nav-links { display: flex; gap: 32px; font-size: 15px; color: var(--muted); }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { display: flex; gap: 12px; align-items: center; }
+    .nav-cta .btn { padding: 10px 18px; font-size: 14px; }
+    .menu-toggle { display: none; background: none; border: 1px solid var(--border); color: var(--text); border-radius: 10px; padding: 8px 12px; cursor: pointer; font: inherit; }
+
+    /* ---------- Hero ---------- */
+    .hero { min-height: 100svh; display: flex; align-items: center; padding: 140px 0 80px; overflow: hidden; }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: -2;
+      background:
+        radial-gradient(60% 50% at 80% 20%, rgba(34, 211, 238, 0.22), transparent 70%),
+        radial-gradient(50% 45% at 10% 80%, rgba(139, 92, 246, 0.25), transparent 70%),
+        var(--bg);
+    }
+    .hero-swirl {
+      position: absolute; z-index: -1; width: min(900px, 140vw); aspect-ratio: 1;
+      right: -18vw; top: 50%; transform: translateY(-50%);
+      border-radius: 50%; filter: blur(8px) saturate(130%); opacity: .9;
+      background:
+        conic-gradient(from 30deg at 50% 50%, #22d3ee, #8b5cf6, #0b1220 18%, #22d3ee 32%, #a3e635 40%, #0b1220 52%, #8b5cf6 66%, #22d3ee 80%, #0b1220);
+      -webkit-mask: radial-gradient(circle at 50% 50%, #000 40%, transparent 70%);
+              mask: radial-gradient(circle at 50% 50%, #000 40%, transparent 70%);
+      animation: swirl 26s linear infinite;
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: -1; pointer-events: none;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+    }
+    .hero-content { max-width: 760px; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 6px; border-radius: 999px;
+      border: 1px solid var(--border); background: var(--surface); font-size: 14px; color: var(--muted);
+    }
+    .pill b { background: var(--grad); color: #04060a; padding: 3px 10px; border-radius: 999px; font-weight: 600; font-size: 12px; }
+    .hero h1 {
+      font-size: clamp(48px, 8vw, 96px); font-weight: 700; margin-top: 28px;
+      letter-spacing: -0.035em;
+    }
+    .gradient-text {
+      background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero p.lead { font-size: clamp(18px, 2vw, 21px); color: var(--muted); margin-top: 24px; max-width: 560px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;
+      margin-top: 72px; max-width: 640px;
+    }
+    .stat { border-left: 1px solid var(--border); padding-left: 18px; }
+    .stat strong { display: block; font-family: var(--font-display); font-size: clamp(28px, 4vw, 40px); font-weight: 600; }
+    .stat span { font-size: 14px; color: var(--muted); }
+
+    /* ---------- Marquee ---------- */
+    .marquee { border-block: 1px solid var(--border); background: var(--bg-2); overflow: hidden; padding: 20px 0; }
+    .marquee-track { display: flex; gap: 56px; width: max-content; animation: marquee 30s linear infinite; }
+    .marquee-track span {
+      font-family: var(--font-display); font-size: 22px; font-weight: 500; color: var(--muted);
+      white-space: nowrap; display: inline-flex; align-items: center; gap: 56px;
+    }
+    .marquee-track span::after { content: "✦"; color: var(--accent); }
+
+    /* ---------- Services ---------- */
+    .services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .card {
+      position: relative; padding: 32px; border-radius: var(--radius);
+      background: var(--surface); border: 1px solid var(--border);
+      transition: transform .3s ease, border-color .3s ease, background .3s ease;
+      overflow: hidden; isolation: isolate;
+    }
+    .card::before {
+      content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0; transition: opacity .4s ease;
+      background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 0%), rgba(34, 211, 238, 0.14), transparent 60%);
+    }
+    .card:hover { transform: translateY(-4px); border-color: rgba(34, 211, 238, 0.35); }
+    .card:hover::before { opacity: 1; }
+    .icon {
+      width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center;
+      background: var(--surface-strong); border: 1px solid var(--border); margin-bottom: 24px; color: var(--accent);
+    }
+    .icon svg { width: 22px; height: 22px; }
+    .card h3 { font-size: 22px; margin-bottom: 10px; }
+    .card p { color: var(--muted); font-size: 15px; }
+    .card ul { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 8px; font-size: 14px; color: var(--muted); }
+    .card li::before { content: "→ "; color: var(--accent); }
+
+    /* ---------- Process ---------- */
+    .process { background: var(--bg-2); }
+    .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; counter-reset: step; position: relative; }
+    .steps::before {
+      content: ""; position: absolute; top: 28px; left: 12%; right: 12%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), var(--accent-2), transparent);
+      opacity: .5;
+    }
+    .step { padding: 0 20px; text-align: center; }
+    .step-dot {
+      width: 56px; height: 56px; margin: 0 auto 24px; border-radius: 50%;
+      display: grid; place-items: center; font-family: var(--font-display); font-weight: 600;
+      background: var(--bg); border: 1px solid var(--accent); color: var(--accent);
+      box-shadow: 0 0 0 6px var(--bg-2), 0 0 30px -4px rgba(34, 211, 238, .5);
+      position: relative; z-index: 1;
+    }
+    .step h3 { font-size: 20px; margin-bottom: 10px; }
+    .step p { color: var(--muted); font-size: 15px; }
+
+    /* ---------- Finishes gallery ---------- */
+    .finishes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .finish { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: var(--surface); }
+    .swatch { aspect-ratio: 16 / 11; position: relative; transition: transform .6s ease; }
+    .finish:hover .swatch { transform: scale(1.04); }
+    .finish .meta { padding: 20px 22px 22px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .finish h3 { font-size: 18px; }
+    .finish .meta span { font-size: 13px; color: var(--muted); white-space: nowrap; }
+    .sw-obsidian {
+      background:
+        radial-gradient(circle at 30% 40%, rgba(255,255,255,.25), transparent 22%),
+        radial-gradient(circle at 70% 60%, rgba(255,255,255,.12), transparent 30%),
+        linear-gradient(120deg, #05070b, #1b2433 45%, #05070b 70%, #222d40);
+    }
+    .sw-flake {
+      background-color: #d8dee9;
+      background-image:
+        radial-gradient(circle, #22d3ee 1.5px, transparent 2px),
+        radial-gradient(circle, #8b5cf6 1px, transparent 1.5px),
+        radial-gradient(circle, #a3e635 1px, transparent 1.5px),
+        radial-gradient(circle, #111 1px, transparent 1.5px);
+      background-size: 38px 38px, 27px 27px, 45px 45px, 19px 19px;
+      background-position: 0 0, 13px 9px, 7px 21px, 4px 3px;
+    }
+    .sw-marble {
+      background:
+        radial-gradient(ellipse at 20% 30%, rgba(255,255,255,.9), transparent 40%),
+        conic-gradient(from 210deg at 60% 60%, #e6edf7, #2dd4bf 12%, #e6edf7 25%, #94a3b8 40%, #e6edf7 55%, #22d3ee 70%, #e6edf7 85%);
+      filter: saturate(1.1);
+    }
+    .sw-matte { background: linear-gradient(180deg, #2a3140, #1a1f2b); }
+    .sw-quartz {
+      background-color: #3b4252;
+      background-image:
+        radial-gradient(circle at 15% 25%, #f8fafc 2px, transparent 3px),
+        radial-gradient(circle at 60% 70%, #cbd5e1 2px, transparent 3px),
+        radial-gradient(circle at 85% 20%, #facc15 1.5px, transparent 2.5px),
+        radial-gradient(circle at 40% 85%, #fff 1.5px, transparent 2.5px),
+        radial-gradient(circle at 75% 55%, #a78bfa 2px, transparent 3px);
+      background-size: 60px 60px, 45px 45px, 70px 70px, 35px 35px, 52px 52px;
+    }
+    .sw-terrazzo {
+      background-color: #e7e5e4;
+      background-image:
+        radial-gradient(ellipse 14px 9px at 20% 30%, #0ea5e9, transparent 70%),
+        radial-gradient(ellipse 10px 16px at 55% 65%, #a3e635, transparent 70%),
+        radial-gradient(ellipse 12px 8px at 80% 25%, #8b5cf6, transparent 70%),
+        radial-gradient(ellipse 9px 12px at 35% 80%, #f97316, transparent 70%),
+        radial-gradient(ellipse 15px 10px at 90% 75%, #334155, transparent 70%);
+      background-size: 120px 110px, 90px 100px, 140px 120px, 110px 90px, 130px 105px;
+    }
+
+    /* ---------- Stats / why us ---------- */
+    .why { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
+    .why h2 { font-size: clamp(34px, 5vw, 56px); }
+    .why p.body { color: var(--muted); margin-top: 20px; font-size: 18px; }
+    .checklist { display: grid; gap: 14px; margin-top: 32px; }
+    .checklist div { display: flex; gap: 14px; align-items: flex-start; }
+    .checklist svg { flex: none; width: 22px; height: 22px; color: var(--accent-3); margin-top: 2px; }
+    .checklist strong { display: block; font-family: var(--font-display); font-weight: 500; }
+    .checklist span { color: var(--muted); font-size: 15px; }
+    .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .metric { padding: 28px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border); }
+    .metric strong { display: block; font-family: var(--font-display); font-size: clamp(40px, 5vw, 56px); font-weight: 700; }
+    .metric span { color: var(--muted); font-size: 14px; }
+    .metric.wide { grid-column: span 2; background: linear-gradient(135deg, rgba(34,211,238,.12), rgba(139,92,246,.12)), var(--surface); }
+
+    /* ---------- Testimonials ---------- */
+    .quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .quote { padding: 32px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border); display: flex; flex-direction: column; gap: 24px; }
+    .quote blockquote { margin: 0; font-size: 17px; line-height: 1.6; }
+    .quote figcaption { margin-top: auto; font-size: 14px; color: var(--muted); }
+    .quote figcaption strong { display: block; color: var(--text); font-family: var(--font-display); font-weight: 500; font-size: 16px; }
+    .stars { color: var(--accent-3); letter-spacing: 3px; font-size: 14px; }
+
+    /* ---------- Quote form ---------- */
+    .quote-wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: 64px; align-items: start; }
+    .quote-wrap h2 { font-size: clamp(34px, 5vw, 56px); }
+    .quote-wrap .lede { color: var(--muted); margin-top: 20px; font-size: 18px; }
+    .contact-list { margin-top: 36px; display: grid; gap: 12px; font-size: 15px; color: var(--muted); }
+    .contact-list strong { color: var(--text); font-weight: 500; }
+    form.form {
+      padding: 36px; border-radius: 24px; background: var(--surface);
+      border: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+      backdrop-filter: blur(10px);
+    }
+    .field { display: flex; flex-direction: column; gap: 8px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { font-size: 13px; color: var(--muted); font-weight: 500; }
+    .field input, .field select, .field textarea {
+      font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--border);
+      border-radius: 12px; padding: 13px 14px; transition: border-color .2s ease, box-shadow .2s ease;
+      width: 100%;
+    }
+    .field textarea { min-height: 110px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px rgba(34,211,238,.15); }
+    .field select option { background: var(--bg); color: var(--text); }
+    form.form .btn { grid-column: 1 / -1; width: 100%; }
+    .form-note { grid-column: 1 / -1; font-size: 13px; color: var(--muted); text-align: center; min-height: 20px; }
+    .form-note.ok { color: var(--accent-3); }
+
+    /* ---------- FAQ ---------- */
+    .faq { max-width: 860px; margin-inline: auto; display: grid; gap: 12px; }
+    details { border: 1px solid var(--border); border-radius: 16px; background: var(--surface); padding: 0 24px; transition: background .2s ease; }
+    details[open] { background: var(--surface-strong); }
+    summary {
+      cursor: pointer; list-style: none; padding: 22px 0; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      font-family: var(--font-display); font-size: 18px; font-weight: 500;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: "+"; font-size: 24px; color: var(--accent); transition: transform .3s ease; line-height: 1;
+    }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p { padding: 0 0 22px; color: var(--muted); }
+
+    /* ---------- CTA band ---------- */
+    .cta-band {
+      position: relative; overflow: hidden; border-radius: 28px; padding: clamp(40px, 6vw, 72px);
+      background: var(--grad); color: #04060a; text-align: center;
+    }
+    .cta-band::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(circle at 20% 0%, rgba(255,255,255,.35), transparent 40%);
+    }
+    .cta-band h2 { font-size: clamp(32px, 5vw, 56px); position: relative; z-index: 1; }
+    .cta-band p { position: relative; z-index: 1; margin: 16px auto 32px; max-width: 560px; font-size: 18px; opacity: .85; }
+    .cta-band .btn { position: relative; z-index: 1; background: #04060a; color: var(--text); box-shadow: none; }
+    .cta-band .btn:hover { transform: translateY(-2px); }
+
+    /* ---------- Footer ---------- */
+    footer { border-top: 1px solid var(--border); padding: 56px 0 32px; color: var(--muted); font-size: 14px; }
+    .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+    .foot-grid h4 { font-size: 14px; color: var(--text); margin-bottom: 16px; font-weight: 500; }
+    .foot-grid a { display: block; margin-bottom: 10px; }
+    .foot-grid a:hover { color: var(--text); }
+    .foot-bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+    /* ---------- Reveal on scroll ---------- */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ---------- Keyframes ---------- */
+    @keyframes swirl { to { transform: translateY(-50%) rotate(360deg); } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: inline-block; }
+      .services, .finishes, .quotes { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; row-gap: 48px; }
+      .steps::before { display: none; }
+      .why, .quote-wrap { grid-template-columns: 1fr; gap: 48px; }
+      .foot-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      body { font-size: 15px; }
+      .nav-cta .btn { display: none; }
+      .services, .finishes, .quotes, .steps { grid-template-columns: 1fr; }
+      .hero { padding-top: 120px; }
+      .hero-stats { grid-template-columns: 1fr 1fr; margin-top: 56px; }
+      .hero-stats .stat:last-child { grid-column: 1 / -1; }
+      .hero-swirl { opacity: .45; right: -45vw; }
+      form.form { grid-template-columns: 1fr; padding: 24px; }
+      .metric-grid { grid-template-columns: 1fr; }
+      .metric.wide { grid-column: auto; }
+      .foot-grid { grid-template-columns: 1fr; }
+      .card, .quote { padding: 26px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="logo" aria-label="Epoxy Co. home"><span class="logo-mark" aria-hidden="true"></span>EPOXY<span class="gradient-text">/CO</span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#finishes">Finishes</a>
+        <a href="#process">Process</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="#quote" class="btn btn-primary">Get a free quote</a>
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-swirl" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-content">
+          <span class="pill"><b>NEW</b> Metallic &amp; flake systems now booking</span>
+          <h1>Floors engineered <span class="gradient-text">like glass.</span></h1>
+          <p class="lead">Seamless, chemical-resistant epoxy floors for garages, warehouses, showrooms and kitchens. Built to outlast the concrete underneath, and finished to look like nothing else on the block.</p>
+          <div class="hero-actions">
+            <a href="#quote" class="btn btn-primary">Get a free quote &rarr;</a>
+            <a href="#finishes" class="btn btn-ghost">Explore finishes</a>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><strong>[XX]+</strong><span>Floors completed</span></div>
+          <div class="stat"><strong>[XX] yrs</strong><span>Installing epoxy</span></div>
+          <div class="stat"><strong>[X]-yr</strong><span>Written warranty</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Garage floors</span><span>Warehouses</span><span>Showrooms</span><span>Commercial kitchens</span><span>Metallic finishes</span><span>Flake systems</span><span>Quartz broadcast</span><span>Industrial coatings</span>
+        <span>Garage floors</span><span>Warehouses</span><span>Showrooms</span><span>Commercial kitchens</span><span>Metallic finishes</span><span>Flake systems</span><span>Quartz broadcast</span><span>Industrial coatings</span>
+      </div>
+    </div>
+
+    <!-- Services -->
+    <section id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Services</span>
+          <h2>One surface. Every demand.</h2>
+          <p>From a two-car garage to a 50,000 sq ft distribution floor, we spec the right system for the traffic, the chemicals and the look you want.</p>
+        </div>
+        <div class="services">
+          <article class="card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></div>
+            <h3>Residential &amp; garage</h3>
+            <p>Stain-resistant, easy-clean floors that make a garage feel like a room you actually want to be in.</p>
+            <ul><li>Full-flake or metallic</li><li>Anti-slip topcoat</li><li>Installed in 2–3 days</li></ul>
+          </article>
+          <article class="card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M7 7V4h10v3M7 13h10M7 17h4"/></svg></div>
+            <h3>Commercial &amp; retail</h3>
+            <p>Showrooms, lobbies and retail floors that look premium and hold up to daily foot traffic.</p>
+            <ul><li>Quartz &amp; terrazzo looks</li><li>Low-VOC systems</li><li>Phased, after-hours installs</li></ul>
+          </article>
+          <article class="card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M12 12l9-5M12 12v10M12 12L3 7"/></svg></div>
+            <h3>Industrial &amp; warehouse</h3>
+            <p>Heavy-duty systems rated for forklifts, impact, chemicals and the wear of 24/7 operations.</p>
+            <ul><li>High-build coatings</li><li>Chemical &amp; spill resistance</li><li>Line striping &amp; zoning</li></ul>
+          </article>
+          <article class="card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v4H4zM4 12h16v8H4z"/></svg></div>
+            <h3>Food-safe &amp; hygienic</h3>
+            <p>Seamless, cove-based installations for kitchens, labs and processing areas that must pass inspection.</p>
+            <ul><li>Antimicrobial options</li><li>Coved, seamless edges</li><li>Hot-tub &amp; wash-down rated</li></ul>
+          </article>
+          <article class="card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18M3 12h18"/></svg></div>
+            <h3>Custom designs</h3>
+            <p>Logos, brand colours, marble veining and sculpted patterns, applied by hand to your spec.</p>
+            <ul><li>Custom logos &amp; graphics</li><li>Color-match to brand</li><li>Hand-troweled marble</li></ul>
+          </article>
+          <article class="card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg></div>
+            <h3>Repair &amp; resurfacing</h3>
+            <p>Tired, peeling or cracked floors restored over existing concrete, often without tear-out.</p>
+            <ul><li>Crack &amp; spall repair</li><li>Moisture-tolerant primers</li><li>Same-week quotes</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process" class="process">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Process</span>
+          <h2>Precision in every layer.</h2>
+          <p>Epoxy is only as good as its prep. We spend most of our time on the part you never see.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal">
+            <div class="step-dot">01</div>
+            <h3>Assess</h3>
+            <p>Free on-site visit. We test moisture, check the slab and recommend the right system for your budget.</p>
+          </div>
+          <div class="step reveal">
+            <div class="step-dot">02</div>
+            <h3>Prep</h3>
+            <p>Diamond grinding and shot-blasting open the pores so the coating bonds like it was poured with the slab.</p>
+          </div>
+          <div class="step reveal">
+            <div class="step-dot">03</div>
+            <h3>Coat</h3>
+            <p>Primer, color or flake broadcast, then clear topcoat. Each layer is timed to cure at its best.</p>
+          </div>
+          <div class="step reveal">
+            <div class="step-dot">04</div>
+            <h3>Cure &amp; seal</h3>
+            <p>We walk the floor, handle the cure window and hand over care instructions. Then we stand behind it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Finishes -->
+    <section id="finishes">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Finishes</span>
+          <h2>Pick your surface.</h2>
+          <p>Every system is customizable in colour, sheen and texture. These are starting points.</p>
+        </div>
+        <div class="finishes">
+          <article class="finish reveal">
+            <div class="swatch sw-obsidian" role="img" aria-label="Obsidian metallic finish"></div>
+            <div class="meta"><h3>Obsidian Metallic</h3><span>Premium</span></div>
+          </article>
+          <article class="finish reveal">
+            <div class="swatch sw-flake" role="img" aria-label="Multi-colour flake finish"></div>
+            <div class="meta"><h3>Confetti Flake</h3><span>Classic</span></div>
+          </article>
+          <article class="finish reveal">
+            <div class="swatch sw-marble" role="img" aria-label="Marble swirl finish"></div>
+            <div class="meta"><h3>Carrara Marble</h3><span>Custom</span></div>
+          </article>
+          <article class="finish reveal">
+            <div class="swatch sw-matte" role="img" aria-label="Solid matte finish"></div>
+            <div class="meta"><h3>Solid Matte</h3><span>Essential</span></div>
+          </article>
+          <article class="finish reveal">
+            <div class="swatch sw-quartz" role="img" aria-label="Quartz broadcast finish"></div>
+            <div class="meta"><h3>Quartz Broadcast</h3><span>Commercial</span></div>
+          </article>
+          <article class="finish reveal">
+            <div class="swatch sw-terrazzo" role="img" aria-label="Terrazzo finish"></div>
+            <div class="meta"><h3>Modern Terrazzo</h3><span>Custom</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why us -->
+    <section class="process">
+      <div class="container why">
+        <div class="reveal">
+          <span class="eyebrow">Why Epoxy Co.</span>
+          <h2 style="margin-top:14px">Built for the long haul.</h2>
+          <p class="body">Cheap coatings peel in a year. We install systems we would walk on ourselves, backed by documented prep and a warranty in writing.</p>
+          <div class="checklist">
+            <div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              <p><strong>Fully insured crew</strong><span>Licensed, insured and background-checked installers.</span></p>
+            </div>
+            <div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              <p><strong>Transparent, itemised quotes</strong><span>No surprise line items. You see prep, materials and labour up front.</span></p>
+            </div>
+            <div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              <p><strong>Low-odour, fast-cure options</strong><span>Get back on your floor sooner, with minimal disruption to your business.</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="metric-grid reveal">
+          <div class="metric wide"><strong class="gradient-text">[XX]-year</strong><span>Warranty on residential and commercial installs</span></div>
+          <div class="metric"><strong>[XX]%</strong><span>Clients who book a second project</span></div>
+          <div class="metric"><strong>[XX]</strong><span>Average days, start to finish</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="reviews">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Reviews</span>
+          <h2>Heard it from the floor up.</h2>
+        </div>
+        <div class="quotes">
+          <figure class="quote reveal" style="margin:0">
+            <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+            <blockquote>&ldquo;[Replace with a real client quote about the install, the crew and the finish.]&rdquo;</blockquote>
+            <figcaption><strong>[Client name]</strong>[Neighbourhood / business type]</figcaption>
+          </figure>
+          <figure class="quote reveal" style="margin:0">
+            <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+            <blockquote>&ldquo;[Replace with a real client quote about timing, communication or cleanup.]&rdquo;</blockquote>
+            <figcaption><strong>[Client name]</strong>[Neighbourhood / business type]</figcaption>
+          </figure>
+          <figure class="quote reveal" style="margin:0">
+            <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+            <blockquote>&ldquo;[Replace with a real client quote about durability or the look.]&rdquo;</blockquote>
+            <figcaption><strong>[Client name]</strong>[Neighbourhood / business type]</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote form -->
+    <section id="quote" class="process">
+      <div class="container quote-wrap">
+        <div class="reveal">
+          <span class="eyebrow">Get a quote</span>
+          <h2 style="margin-top:14px">Your floor, scoped in 48 hours.</h2>
+          <p class="lede">Tell us about the space and we'll reply with a written, itemised quote. Free site visits within [service area].</p>
+          <div class="contact-list">
+            <div><strong>Phone:</strong> [(000) 000-0000]</div>
+            <div><strong>Email:</strong> [hello@yourdomain.com]</div>
+            <div><strong>Hours:</strong> Mon–Sat, 7am–6pm</div>
+          </div>
+        </div>
+        <form class="form reveal" id="quote-form" novalidate>
+          <div class="field">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" />
+          </div>
+          <div class="field">
+            <label for="type">Project type</label>
+            <select id="type" name="type">
+              <option>Garage</option>
+              <option>Commercial / retail</option>
+              <option>Warehouse / industrial</option>
+              <option>Kitchen / food-safe</option>
+              <option>Repair / resurfacing</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="sqft">Approx. square footage</label>
+            <input id="sqft" name="sqft" type="number" min="1" inputmode="numeric" />
+          </div>
+          <div class="field full">
+            <label for="message">Tell us about the space</label>
+            <textarea id="message" name="message" placeholder="Current floor condition, desired finish, timeline..."></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Request my quote &rarr;</button>
+          <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <div class="section-head reveal" style="text-align:center; margin-inline:auto">
+          <span class="eyebrow">FAQ</span>
+          <h2>Good questions, straight answers.</h2>
+        </div>
+        <div class="faq reveal">
+          <details open>
+            <summary>How long does an epoxy floor take?</summary>
+            <p>Most residential garages are finished in 2–3 days. Commercial and industrial jobs are scheduled around your operation, often after hours or in phases.</p>
+          </details>
+          <details>
+            <summary>Can you install over my existing concrete?</summary>
+            <p>In most cases, yes. We diagnose the slab first, test for moisture, and repair cracks or spalling before coating. Some floors need a moisture-mitigating primer.</p>
+          </details>
+          <details>
+            <summary>Is epoxy slippery?</summary>
+            <p>Not when installed correctly. We add anti-slip aggregate or a textured topcoat, and can match the grip level to your use case.</p>
+          </details>
+          <details>
+            <summary>When can I park or walk on it?</summary>
+            <p>Light foot traffic is usually fine within 24 hours. Vehicles typically wait 72 hours, and heavy equipment needs the full cure window. We confirm the exact timing for your system.</p>
+          </details>
+          <details>
+            <summary>Do you offer a warranty?</summary>
+            <p>Yes. Every install includes a written warranty covering delamination and workmanship. Details are provided with your quote.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="padding-top:0">
+      <div class="container">
+        <div class="cta-band reveal">
+          <h2>Ready for a floor that turns heads?</h2>
+          <p>Book a free on-site assessment. No pressure, no hidden fees, just a clear plan.</p>
+          <a href="#quote" class="btn">Book my free assessment &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="foot-grid">
+        <div>
+          <a href="#top" class="logo" style="margin-bottom:16px"><span class="logo-mark" aria-hidden="true"></span>EPOXY<span class="gradient-text">/CO</span></a>
+          <p style="max-width:300px">Seamless epoxy flooring for homes and businesses. Engineered in the prep, finished to last.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <a href="#services">Garage</a>
+          <a href="#services">Commercial</a>
+          <a href="#services">Industrial</a>
+          <a href="#services">Food-safe</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="#process">Process</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#faq">FAQ</a>
+          <a href="#quote">Contact</a>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">Google Reviews</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>&copy; <span id="year"></span> Epoxy Co. All rights reserved.</span>
+        <span>Licensed &amp; insured · [License #]</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile menu: toggles a simple dropdown of the nav links
+    (function () {
+      const btn = document.querySelector(".menu-toggle");
+      const links = document.querySelector(".nav-links");
+      btn.id = "menu-btn";
+      links.id = "nav-links";
+      btn.addEventListener("click", () => {
+        const open = links.classList.toggle("open");
+        btn.setAttribute("aria-expanded", String(open));
+        btn.textContent = open ? "Close" : "Menu";
+        Object.assign(links.style, open ? {
+          display: "flex", flexDirection: "column", position: "absolute", top: "72px", left: "0", right: "0",
+          padding: "20px 16px", background: "var(--bg)", borderBottom: "1px solid var(--border)", gap: "18px"
+        } : {});
+      });
+      links.addEventListener("click", (e) => {
+        if (e.target.tagName === "A" && links.classList.contains("open")) btn.click();
+      });
+    })();
+
+    // Reveal on scroll
+    (function () {
+      const items = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) { items.forEach(el => el.classList.add("in")); return; }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) { entry.target.classList.add("in"); io.unobserve(entry.target); }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+      items.forEach((el) => io.observe(el));
+    })();
+
+    // Cursor-follow glow on service cards
+    document.querySelectorAll(".card").forEach((card) => {
+      card.addEventListener("pointermove", (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty("--mx", (e.clientX - r.left) + "px");
+        card.style.setProperty("--my", (e.clientY - r.top) + "px");
+      });
+    });
+
+    // Quote form: validates locally. Wire `action` / fetch to your backend or form service.
+    (function () {
+      const form = document.getElementById("quote-form");
+      const note = document.getElementById("form-note");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(form).entries());
+        const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email || "");
+        note.classList.remove("ok");
+        if (!data.name || !emailOk) {
+          note.textContent = "Please add your name and a valid email so we can reply.";
+          return;
+        }
+        // TODO: POST `data` to your endpoint here.
+        note.classList.add("ok");
+        note.textContent = "Thanks, " + data.name.split(" ")[0] + "! We'll be in touch within 48 hours.";
+        form.reset();
+      });
+    })();
+  </script>
+</body>
+</html>
