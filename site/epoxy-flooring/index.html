@@ -1,0 +1,897 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Epoxy Floors Austin, TX | Epoxy Co.</title>
+  <meta name="description" content="Seamless epoxy garage, commercial and industrial floors in Austin, TX. Free on-site quotes, professional prep, and a written warranty." />
+  <meta name="theme-color" content="#0b1220" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0b1220;
+      --ink-2: #1e293b;
+      --muted: #5b6577;
+      --bg: #ffffff;
+      --bg-soft: #f5f7fb;
+      --line: #e3e8f0;
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --teal: #14b8a6;
+      --amber: #f5b301;
+      --grad: linear-gradient(120deg, #2563eb 0%, #14b8a6 100%);
+      --shadow: 0 1px 2px rgba(11, 18, 32, .06), 0 12px 32px -12px rgba(11, 18, 32, .18);
+      --radius: 16px;
+      --max: 1180px;
+      --font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0; font-family: var(--font); color: var(--ink); background: var(--bg);
+      font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4 { margin: 0; line-height: 1.12; letter-spacing: -0.025em; font-weight: 800; }
+    p { margin: 0; }
+    .container { width: min(100% - 40px, var(--max)); margin-inline: auto; }
+    section { padding: clamp(64px, 9vw, 112px) 0; }
+    .eyebrow {
+      display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--blue);
+    }
+    .section-head { max-width: 660px; margin-bottom: 52px; }
+    .section-head.center { margin-inline: auto; text-align: center; }
+    .section-head h2 { font-size: clamp(32px, 4.4vw, 48px); margin-top: 12px; }
+    .section-head p { color: var(--muted); font-size: 18px; margin-top: 16px; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 15px 26px; border-radius: 12px; border: 2px solid transparent;
+      font: inherit; font-weight: 700; font-size: 16px; cursor: pointer;
+      transition: transform .15s ease, background .2s ease, box-shadow .2s ease, color .2s ease;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 8px 24px -8px rgba(37, 99, 235, .6); }
+    .btn-primary:hover { background: var(--blue-dark); }
+    .btn-outline { border-color: var(--ink); color: var(--ink); background: transparent; }
+    .btn-outline:hover { background: var(--ink); color: #fff; }
+    .btn-light { background: #fff; color: var(--ink); }
+    .btn-light:hover { background: var(--bg-soft); }
+    .btn-sm { padding: 10px 18px; font-size: 14px; border-radius: 10px; }
+    .btn-block { width: 100%; }
+    :focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; border-radius: 6px; }
+
+    /* ---------- Top bar + nav ---------- */
+    .topbar { background: var(--ink); color: #cbd5e1; font-size: 14px; }
+    .topbar .container { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 9px; flex-wrap: wrap; }
+    .topbar strong { color: #fff; font-weight: 700; }
+    .stars { color: var(--amber); letter-spacing: 2px; }
+    .nav { position: sticky; top: 0; z-index: 60; background: rgba(255,255,255,.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 24px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; letter-spacing: -0.02em; }
+    .logo-mark {
+      width: 34px; height: 34px; border-radius: 10px; background: var(--grad); position: relative; overflow: hidden;
+    }
+    .logo-mark::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,.55) 50%, transparent 65%);
+      transform: translateX(-100%); animation: sheen 3.6s ease-in-out infinite;
+    }
+    .nav-links { display: flex; gap: 30px; font-size: 15px; font-weight: 600; color: var(--ink-2); }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta { display: flex; align-items: center; gap: 12px; }
+    .phone-link { font-weight: 700; color: var(--ink); white-space: nowrap; }
+    .menu-toggle {
+      display: none; background: none; border: 1px solid var(--line); border-radius: 10px;
+      padding: 9px 14px; font: inherit; font-weight: 600; color: var(--ink); cursor: pointer;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: clamp(48px, 7vw, 88px) 0 clamp(56px, 8vw, 96px); background:
+      radial-gradient(900px 500px at 90% -10%, rgba(37,99,235,.10), transparent 60%),
+      radial-gradient(700px 500px at -10% 110%, rgba(20,184,166,.10), transparent 60%),
+      var(--bg); }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px;
+      background: #eef4ff; color: var(--blue-dark); font-size: 14px; font-weight: 700;
+    }
+    .badge i { width: 8px; height: 8px; border-radius: 50%; background: #16a34a; box-shadow: 0 0 0 4px rgba(22,163,74,.18); }
+    .hero h1 { font-size: clamp(40px, 5.8vw, 66px); margin-top: 22px; }
+    .hero h1 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero .lead { font-size: clamp(18px, 1.8vw, 20px); color: var(--muted); margin-top: 22px; max-width: 540px; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .checks { list-style: none; padding: 0; margin: 32px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; font-weight: 600; color: var(--ink-2); font-size: 15px; }
+    .checks li::before { content: "✓"; color: var(--teal); font-weight: 800; margin-right: 10px; }
+
+    .quote-card {
+      background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 30px;
+      box-shadow: 0 30px 70px -28px rgba(11,18,32,.35); position: relative;
+    }
+    .quote-card h2 { font-size: 24px; }
+    .quote-card > p { color: var(--muted); font-size: 15px; margin: 6px 0 20px; }
+    .quote-card .tag {
+      position: absolute; top: -12px; right: 22px; background: var(--ink); color: #fff;
+      font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 999px;
+    }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label { font-size: 13px; font-weight: 700; color: var(--ink-2); }
+    .field input, .field select, .field textarea {
+      font: inherit; font-size: 16px; color: var(--ink); background: #fff; border: 1.5px solid #d5dce8;
+      border-radius: 10px; padding: 12px 14px; width: 100%;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 4px rgba(37,99,235,.15); }
+    .field textarea { min-height: 96px; resize: vertical; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .stack { display: grid; gap: 12px; }
+    .form-note { font-size: 14px; color: var(--muted); text-align: center; min-height: 22px; margin-top: 4px; }
+    .form-note.ok { color: #15803d; font-weight: 600; }
+    .form-note.err { color: #b91c1c; }
+    .fine { font-size: 12px; color: var(--muted); text-align: center; margin-top: 10px; }
+
+    /* ---------- Trust bar ---------- */
+    .trust { background: var(--bg-soft); border-block: 1px solid var(--line); padding: 26px 0; }
+    .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
+    .trust-grid strong { display: block; font-size: 28px; font-weight: 800; letter-spacing: -0.02em; }
+    .trust-grid span { font-size: 14px; color: var(--muted); font-weight: 600; }
+
+    /* ---------- Before / after ---------- */
+    .ba { position: relative; aspect-ratio: 16 / 9; border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); user-select: none; --pos: 50%; }
+    .ba .layer { position: absolute; inset: 0; }
+    .ba .before {
+      background-color: #9aa3ad;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(0,0,0,.18) 0 2px, transparent 3px),
+        radial-gradient(circle at 70% 60%, rgba(0,0,0,.14) 0 3px, transparent 4px),
+        radial-gradient(circle at 45% 80%, rgba(255,255,255,.25) 0 2px, transparent 3px),
+        radial-gradient(circle at 85% 20%, rgba(0,0,0,.12) 0 2px, transparent 3px),
+        linear-gradient(135deg, #a7afb8, #8b939c 50%, #a3abb4);
+      background-size: 90px 90px, 130px 130px, 70px 70px, 110px 110px, auto;
+      clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+    }
+    .ba .before::after {
+      content: "Before"; position: absolute; left: 18px; bottom: 18px; background: rgba(11,18,32,.75); color: #fff;
+      padding: 6px 12px; border-radius: 8px; font-weight: 700; font-size: 14px;
+    }
+    .ba .after {
+      background:
+        radial-gradient(ellipse 40% 22% at 25% 30%, rgba(255,255,255,.75), transparent 70%),
+        radial-gradient(ellipse 30% 18% at 70% 70%, rgba(255,255,255,.6), transparent 70%),
+        conic-gradient(from 200deg at 55% 55%, #0f172a, #1e3a8a 18%, #e2e8f0 30%, #0f766e 44%, #0b1220 60%, #93c5fd 72%, #0f172a);
+    }
+    .ba .after::after {
+      content: "After"; position: absolute; right: 18px; bottom: 18px; background: var(--blue); color: #fff;
+      padding: 6px 12px; border-radius: 8px; font-weight: 700; font-size: 14px;
+    }
+    .ba .divider {
+      position: absolute; top: 0; bottom: 0; left: var(--pos); width: 3px; background: #fff; transform: translateX(-50%);
+      box-shadow: 0 0 0 1px rgba(0,0,0,.08);
+    }
+    .ba .divider::after {
+      content: "⇆"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 46px; height: 46px; border-radius: 50%; background: #fff; color: var(--ink);
+      display: grid; place-items: center; font-size: 20px; box-shadow: 0 6px 20px rgba(0,0,0,.25);
+    }
+    .ba input[type="range"] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+    .proof { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .proof ul { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 14px; }
+    .proof li { display: flex; gap: 12px; align-items: flex-start; font-weight: 600; color: var(--ink-2); }
+    .proof li::before {
+      content: "✓"; flex: none; width: 24px; height: 24px; border-radius: 50%; background: #dcfce7; color: #15803d;
+      display: grid; place-items: center; font-size: 13px; font-weight: 800; margin-top: 2px;
+    }
+    .hint { font-size: 14px; color: var(--muted); margin-top: 14px; text-align: center; }
+
+    /* ---------- Services ---------- */
+    .services { background: var(--bg-soft); }
+    .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .svc {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 30px;
+      display: flex; flex-direction: column; gap: 12px; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .svc:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: #cfd8e6; }
+    .svc .ico {
+      width: 52px; height: 52px; border-radius: 14px; background: #eef4ff; color: var(--blue);
+      display: grid; place-items: center; margin-bottom: 6px;
+    }
+    .svc .ico svg { width: 26px; height: 26px; }
+    .svc h3 { font-size: 21px; }
+    .svc p { color: var(--muted); font-size: 15px; flex: 1; }
+    .svc .price { font-size: 14px; font-weight: 700; color: var(--ink-2); border-top: 1px dashed var(--line); padding-top: 14px; margin-top: 6px; }
+    .svc .price b { color: var(--blue); }
+
+    /* ---------- Process ---------- */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; counter-reset: s; }
+    .step { position: relative; padding-top: 6px; }
+    .step::before {
+      counter-increment: s; content: "0" counter(s);
+      display: inline-grid; place-items: center; width: 52px; height: 52px; border-radius: 14px;
+      background: var(--ink); color: #fff; font-weight: 800; font-size: 16px; margin-bottom: 18px;
+    }
+    .step:not(:last-child)::after {
+      content: ""; position: absolute; top: 26px; left: 70px; right: -12px; height: 2px;
+      background: repeating-linear-gradient(90deg, #cbd5e1 0 8px, transparent 8px 14px);
+    }
+    .step h3 { font-size: 20px; margin-bottom: 8px; }
+    .step p { color: var(--muted); font-size: 15px; }
+
+    /* ---------- Finishes ---------- */
+    .finishes { background: var(--ink); color: #fff; }
+    .finishes .eyebrow { color: #5eead4; }
+    .finishes .section-head p { color: #94a3b8; }
+    .fin-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .fin { border-radius: var(--radius); overflow: hidden; background: #111a2e; border: 1px solid #1f2b44; }
+    .fin .sw { aspect-ratio: 4 / 3; transition: transform .6s ease; }
+    .fin:hover .sw { transform: scale(1.04); }
+    .fin .meta { padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .fin h3 { font-size: 18px; }
+    .fin .meta span { font-size: 13px; color: #94a3b8; font-weight: 600; }
+    .sw-1 { background: radial-gradient(circle at 30% 40%, rgba(255,255,255,.3), transparent 25%), linear-gradient(120deg, #0b1220, #1e2a44 45%, #0b1220 70%, #26365a); }
+    .sw-2 { background-color: #e2e8f0; background-image:
+      radial-gradient(circle, #2563eb 1.6px, transparent 2.2px), radial-gradient(circle, #14b8a6 1.2px, transparent 1.8px),
+      radial-gradient(circle, #f59e0b 1.2px, transparent 1.8px), radial-gradient(circle, #0f172a 1px, transparent 1.5px);
+      background-size: 36px 36px, 26px 26px, 44px 44px, 18px 18px; background-position: 0 0, 11px 7px, 6px 19px, 3px 2px; }
+    .sw-3 { background:
+      radial-gradient(ellipse 40% 20% at 30% 30%, rgba(255,255,255,.9), transparent 70%),
+      conic-gradient(from 210deg at 60% 60%, #f1f5f9, #5eead4 12%, #f1f5f9 25%, #94a3b8 40%, #f1f5f9 55%, #60a5fa 70%, #f1f5f9 85%); }
+    .sw-4 { background: linear-gradient(180deg, #334155, #1e293b); }
+    .sw-5 { background-color: #3b4252; background-image:
+      radial-gradient(circle at 15% 25%, #f8fafc 2px, transparent 3px), radial-gradient(circle at 60% 70%, #cbd5e1 2px, transparent 3px),
+      radial-gradient(circle at 85% 20%, #facc15 1.5px, transparent 2.5px), radial-gradient(circle at 40% 85%, #fff 1.5px, transparent 2.5px);
+      background-size: 60px 60px, 45px 45px, 70px 70px, 35px 35px; }
+    .sw-6 { background-color: #e7e5e4; background-image:
+      radial-gradient(ellipse 14px 9px at 20% 30%, #0ea5e9, transparent 70%), radial-gradient(ellipse 10px 16px at 55% 65%, #a3e635, transparent 70%),
+      radial-gradient(ellipse 12px 8px at 80% 25%, #8b5cf6, transparent 70%), radial-gradient(ellipse 9px 12px at 35% 80%, #f97316, transparent 70%);
+      background-size: 120px 110px, 90px 100px, 140px 120px, 110px 90px; }
+
+    /* ---------- Why us ---------- */
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .why ul { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 22px; }
+    .why li { display: grid; grid-template-columns: 48px 1fr; gap: 16px; }
+    .why li .ico { width: 48px; height: 48px; border-radius: 14px; background: #eef4ff; color: var(--blue); display: grid; place-items: center; }
+    .why li .ico svg { width: 24px; height: 24px; }
+    .why li strong { display: block; font-size: 17px; margin-bottom: 2px; }
+    .why li span { color: var(--muted); font-size: 15px; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .stat-card { background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; }
+    .stat-card.dark { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .stat-card strong { display: block; font-size: clamp(38px, 4.6vw, 52px); font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+    .stat-card span { display: block; margin-top: 10px; font-size: 15px; color: var(--muted); font-weight: 600; }
+    .stat-card.dark span { color: #94a3b8; }
+    .stat-card.wide { grid-column: span 2; background: linear-gradient(120deg, #eff6ff, #ecfeff); border-color: #d6e7ff; }
+
+    /* ---------- Reviews ---------- */
+    .reviews { background: var(--bg-soft); }
+    .rev-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .rev { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; display: flex; flex-direction: column; gap: 18px; }
+    .rev .stars { font-size: 18px; }
+    .rev blockquote { margin: 0; font-size: 16px; color: var(--ink-2); flex: 1; }
+    .rev figcaption { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--muted); }
+    .rev figcaption b { display: block; color: var(--ink); font-size: 15px; }
+    .avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--grad); color: #fff; display: grid; place-items: center; font-weight: 800; flex: none; }
+
+    /* ---------- Areas ---------- */
+    .areas-wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chips span { padding: 10px 16px; border: 1px solid var(--line); border-radius: 999px; font-weight: 600; font-size: 15px; background: #fff; }
+
+    /* ---------- CTA band ---------- */
+    .cta { padding: 0; }
+    .cta-box {
+      background: var(--ink); color: #fff; border-radius: 24px; padding: clamp(40px, 6vw, 64px);
+      display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap;
+      background-image: radial-gradient(600px 300px at 100% 0%, rgba(37,99,235,.45), transparent 60%), radial-gradient(500px 260px at 0% 100%, rgba(20,184,166,.35), transparent 60%);
+    }
+    .cta-box h2 { font-size: clamp(28px, 3.8vw, 40px); max-width: 560px; }
+    .cta-box p { color: #cbd5e1; margin-top: 10px; max-width: 520px; }
+    .cta-box .btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* ---------- Quote section ---------- */
+    .contact { background: var(--bg-soft); }
+    .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: start; }
+    .contact-info { display: grid; gap: 18px; margin-top: 30px; }
+    .contact-info div { display: flex; gap: 14px; align-items: flex-start; }
+    .contact-info .ico { width: 44px; height: 44px; border-radius: 12px; background: #fff; border: 1px solid var(--line); display: grid; place-items: center; color: var(--blue); flex: none; }
+    .contact-info .ico svg { width: 20px; height: 20px; }
+    .contact-info strong { display: block; font-size: 15px; }
+    .contact-info span { color: var(--muted); font-size: 15px; }
+    .form-card { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: clamp(24px, 4vw, 40px); box-shadow: var(--shadow); }
+    .form-card h3 { font-size: 24px; margin-bottom: 6px; }
+    .form-card > p { color: var(--muted); margin-bottom: 24px; font-size: 15px; }
+
+    /* ---------- FAQ ---------- */
+    .faq { max-width: 820px; margin-inline: auto; display: grid; gap: 12px; }
+    details { border: 1px solid var(--line); border-radius: 14px; background: #fff; padding: 0 22px; }
+    details[open] { box-shadow: var(--shadow); }
+    summary {
+      cursor: pointer; list-style: none; padding: 20px 0; display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; font-weight: 700; font-size: 17px;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font-size: 26px; font-weight: 400; color: var(--blue); line-height: 1; transition: transform .25s ease; }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p { padding: 0 0 20px; color: var(--muted); }
+
+    /* ---------- Footer ---------- */
+    footer { background: var(--ink); color: #94a3b8; padding: 64px 0 28px; font-size: 15px; }
+    .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
+    footer .logo { color: #fff; margin-bottom: 14px; }
+    footer h4 { color: #fff; font-size: 15px; margin-bottom: 14px; }
+    footer a { display: block; margin-bottom: 10px; }
+    footer a:hover { color: #fff; }
+    .foot-bottom { margin-top: 48px; padding-top: 22px; border-top: 1px solid #1f2b44; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 14px; }
+
+    /* ---------- Mobile sticky call bar ---------- */
+    .mobile-bar { display: none; }
+
+    /* ---------- Reveal ---------- */
+    .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+    .js .reveal.in { opacity: 1; transform: none; }
+
+    @keyframes sheen { 0%, 60% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1024px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: inline-block; }
+      .hero-grid, .proof, .why-grid, .areas-wrap, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .svc-grid, .rev-grid, .fin-grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; row-gap: 40px; }
+      .step:not(:last-child)::after { display: none; }
+      .trust-grid { grid-template-columns: 1fr 1fr; }
+      .foot-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 720px) {
+      body { font-size: 15px; padding-bottom: 76px; }
+      .topbar .container { justify-content: center; text-align: center; font-size: 13px; }
+      .nav-cta .btn, .nav-cta .phone-link { display: none; }
+      .nav-inner { height: 64px; }
+      .svc-grid, .rev-grid, .fin-grid, .steps { grid-template-columns: 1fr; }
+      .checks { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .quote-card { padding: 24px; }
+      .stats { grid-template-columns: 1fr; }
+      .stat-card.wide { grid-column: auto; }
+      .foot-grid { grid-template-columns: 1fr; }
+      .cta-box { text-align: left; }
+      .hero-ctas .btn { flex: 1 1 100%; }
+      .mobile-bar {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 80;
+        padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: rgba(255,255,255,.97);
+        border-top: 1px solid var(--line); box-shadow: 0 -8px 24px -12px rgba(11,18,32,.25);
+      }
+      .mobile-bar .btn { padding: 14px 10px; font-size: 15px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+      .js .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container">
+      <span><span class="stars">★★★★★</span> <strong>[4.9]</strong> rated by [XX]+ Austin homeowners &amp; businesses</span>
+      <span>Licensed &amp; insured &middot; Free on-site quotes &middot; <strong>Call [(512) 000-0000]</strong></span>
+    </div>
+  </div>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="logo" aria-label="Epoxy Co. home"><span class="logo-mark" aria-hidden="true"></span>Epoxy Co.</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#finishes">Finishes</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="phone-link" href="tel:+15120000000">[(512) 000-0000]</a>
+        <a href="#quote" class="btn btn-primary btn-sm">Free quote</a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="badge"><i aria-hidden="true"></i> Now booking garage &amp; commercial installs</span>
+          <h1>Seamless epoxy floors that <em>look as good as they perform.</em></h1>
+          <p class="lead">Garages, showrooms, warehouses and commercial kitchens in Austin and surrounding areas. Professional grinding and prep, a premium coating system, and a written warranty.</p>
+          <div class="hero-ctas">
+            <a href="#quote" class="btn btn-primary">Get my free quote &rarr;</a>
+            <a href="tel:+15120000000" class="btn btn-outline">Call [(512) 000-0000]</a>
+          </div>
+          <ul class="checks">
+            <li>Free on-site estimate</li>
+            <li>Written, itemised pricing</li>
+            <li>Insured installers</li>
+            <li>Written warranty</li>
+          </ul>
+        </div>
+
+        <aside class="quote-card reveal" aria-label="Quick quote request">
+          <span class="tag">Replies within 24 hrs</span>
+          <h2>Get your free quote</h2>
+          <p>Takes 30 seconds. No obligation.</p>
+          <form class="stack" id="hero-form" novalidate>
+            <div class="field">
+              <label for="h-name">Full name</label>
+              <input id="h-name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div class="grid-2">
+              <div class="field">
+                <label for="h-phone">Phone</label>
+                <input id="h-phone" name="phone" type="tel" autocomplete="tel" />
+              </div>
+              <div class="field">
+                <label for="h-sqft">Square feet</label>
+                <input id="h-sqft" name="sqft" type="number" min="1" inputmode="numeric" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="h-email">Email</label>
+              <input id="h-email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <button class="btn btn-primary btn-block" type="submit">Request free quote</button>
+            <p class="form-note" role="status" aria-live="polite"></p>
+          </form>
+          <p class="fine">We never share your info. Unsubscribe anytime.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Trust bar -->
+    <div class="trust">
+      <div class="container trust-grid">
+        <div><strong>[XX]+</strong><span>Floors installed</span></div>
+        <div><strong>[XX] yrs</strong><span>Installing epoxy</span></div>
+        <div><strong>[4.9]★</strong><span>Average Google rating</span></div>
+        <div><strong>[X]-yr</strong><span>Written warranty</span></div>
+      </div>
+    </div>
+
+    <!-- Before / after -->
+    <section>
+      <div class="container proof">
+        <div class="reveal">
+          <span class="eyebrow">Real transformation</span>
+          <h2 style="font-size:clamp(32px,4.4vw,48px);margin-top:12px">Drag to see the difference.</h2>
+          <p style="color:var(--muted);font-size:18px;margin-top:16px">Most floors we replace were peeling, stained or cracked. A proper grind, crack repair and a 2-coat system turn them into a surface you'll be proud to show off.</p>
+          <ul>
+            <li>Diamond grinding opens the pores for a real bond</li>
+            <li>Cracks and spalls repaired before coating</li>
+            <li>Stain, chemical and impact resistant topcoat</li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <div class="ba" id="ba" style="--pos:50%">
+            <div class="layer after"></div>
+            <div class="layer before"></div>
+            <div class="divider"></div>
+            <input type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after" />
+          </div>
+          <p class="hint">Replace these with photos of your own completed jobs.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Services</span>
+          <h2>Epoxy solutions for every type of space.</h2>
+          <p>Tell us how the floor gets used and we'll recommend the right system, from a two-car garage to a 50,000 sq ft distribution floor.</p>
+        </div>
+        <div class="svc-grid">
+          <article class="svc reveal">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></div>
+            <h3>Garage floors</h3>
+            <p>Stain-resistant, easy-clean surfaces in flake, metallic or solid colour. Installed in 2&ndash;3 days.</p>
+            <div class="price">From <b>$[X.XX]</b> per sq ft</div>
+          </article>
+          <article class="svc reveal">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M7 7V4h10v3M7 13h10M7 17h4"/></svg></div>
+            <h3>Commercial &amp; retail</h3>
+            <p>Showrooms, lobbies and offices with premium looks like quartz, terrazzo and marble. Low-odour, phased installs.</p>
+            <div class="price">From <b>$[X.XX]</b> per sq ft</div>
+          </article>
+          <article class="svc reveal">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M12 12l9-5M12 12v10M12 12L3 7"/></svg></div>
+            <h3>Warehouse &amp; industrial</h3>
+            <p>High-build coatings rated for forklift traffic, impact and chemical spills, with line striping and zoning.</p>
+            <div class="price">From <b>$[X.XX]</b> per sq ft</div>
+          </article>
+          <article class="svc reveal">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v4H4zM4 12h16v8H4z"/></svg></div>
+            <h3>Food-safe &amp; hygienic</h3>
+            <p>Seamless, coved installations for kitchens, labs and processing areas that need to pass inspection.</p>
+            <div class="price">From <b>$[X.XX]</b> per sq ft</div>
+          </article>
+          <article class="svc reveal">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18M3 12h18"/></svg></div>
+            <h3>Custom &amp; logo designs</h3>
+            <p>Brand colours, logos, marble veining and decorative patterns applied by hand to your specification.</p>
+            <div class="price">Quoted per project</div>
+          </article>
+          <article class="svc reveal">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg></div>
+            <h3>Repair &amp; resurfacing</h3>
+            <p>Peeling, cracked or stained concrete restored over the existing slab, often without tear-out.</p>
+            <div class="price">From <b>$[XXX]</b> flat rate</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">How it works</span>
+          <h2>Prep is 80% of the job.</h2>
+          <p>Most epoxy failures come from skipped prep. Our process is built around the part you never see.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal">
+            <h3>Free assessment</h3>
+            <p>We visit, test for moisture, check the slab and recommend a system that fits your budget and use.</p>
+          </div>
+          <div class="step reveal">
+            <h3>Surface prep</h3>
+            <p>Diamond grinding and crack repair open the pores so the coating bonds to the concrete itself.</p>
+          </div>
+          <div class="step reveal">
+            <h3>Coating system</h3>
+            <p>Primer, colour or flake broadcast, then a clear topcoat. Each layer is applied on schedule to cure properly.</p>
+          </div>
+          <div class="step reveal">
+            <h3>Cure &amp; handover</h3>
+            <p>We walk you through the cure window and care instructions, then stand behind the work with a written warranty.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Finishes -->
+    <section id="finishes" class="finishes">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Finishes</span>
+          <h2>Pick your look.</h2>
+          <p>Every system can be customised in colour, sheen and texture. These are starting points.</p>
+        </div>
+        <div class="fin-grid">
+          <article class="fin reveal"><div class="sw sw-1" role="img" aria-label="Obsidian metallic finish"></div><div class="meta"><h3>Obsidian Metallic</h3><span>Premium</span></div></article>
+          <article class="fin reveal"><div class="sw sw-2" role="img" aria-label="Multi-colour flake finish"></div><div class="meta"><h3>Confetti Flake</h3><span>Most popular</span></div></article>
+          <article class="fin reveal"><div class="sw sw-3" role="img" aria-label="Marble swirl finish"></div><div class="meta"><h3>Carrara Marble</h3><span>Custom</span></div></article>
+          <article class="fin reveal"><div class="sw sw-4" role="img" aria-label="Solid matte finish"></div><div class="meta"><h3>Solid Matte</h3><span>Essential</span></div></article>
+          <article class="fin reveal"><div class="sw sw-5" role="img" aria-label="Quartz broadcast finish"></div><div class="meta"><h3>Quartz Broadcast</h3><span>Commercial</span></div></article>
+          <article class="fin reveal"><div class="sw sw-6" role="img" aria-label="Terrazzo finish"></div><div class="meta"><h3>Modern Terrazzo</h3><span>Custom</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why us -->
+    <section class="why">
+      <div class="container why-grid">
+        <div class="reveal">
+          <span class="eyebrow">Why Epoxy Co.</span>
+          <h2 style="font-size:clamp(32px,4.4vw,48px);margin-top:12px">Built to last, priced to compare.</h2>
+          <p style="color:var(--muted);font-size:18px;margin-top:16px">Cheap coatings peel within a year. We install systems we'd walk on ourselves, backed by documented prep and a warranty in writing.</p>
+          <ul>
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+              <div><strong>Licensed, insured crew</strong><span>Background-checked installers and full liability coverage on every job.</span></div>
+            </li>
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6v20h12V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></span>
+              <div><strong>Itemised, no-surprise quotes</strong><span>See prep, materials and labour broken out before you commit.</span></div>
+            </li>
+            <li>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+              <div><strong>Fast turnaround</strong><span>Most garages are done in 2&ndash;3 days, with low-odour options for occupied spaces.</span></div>
+            </li>
+          </ul>
+        </div>
+        <div class="stats reveal">
+          <div class="stat-card dark"><strong>[XX]+</strong><span>Floors completed</span></div>
+          <div class="stat-card"><strong>[XX]%</strong><span>Clients who book again or refer</span></div>
+          <div class="stat-card wide"><strong>[X]-year</strong><span>Written warranty on residential and commercial installs</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" class="reviews">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Reviews</span>
+          <h2>What Austin homeowners say.</h2>
+          <p>[Replace these with real, approved Google reviews. Don't publish invented quotes.]</p>
+        </div>
+        <div class="rev-grid">
+          <figure class="rev reveal" style="margin:0">
+            <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+            <blockquote>&ldquo;[Real client quote about the install, the crew and the finish.]&rdquo;</blockquote>
+            <figcaption><span class="avatar">[A]</span><div><b>[Client first name, neighbourhood]</b>[Garage floor, date]</div></figcaption>
+          </figure>
+          <figure class="rev reveal" style="margin:0">
+            <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+            <blockquote>&ldquo;[Real client quote about timing, communication or cleanup.]&rdquo;</blockquote>
+            <figcaption><span class="avatar">[B]</span><div><b>[Client first name, neighbourhood]</b>[Commercial space, date]</div></figcaption>
+          </figure>
+          <figure class="rev reveal" style="margin:0">
+            <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+            <blockquote>&ldquo;[Real client quote about durability or the look.]&rdquo;</blockquote>
+            <figcaption><span class="avatar">[C]</span><div><b>[Client first name, neighbourhood]</b>[Warehouse floor, date]</div></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service areas -->
+    <section>
+      <div class="container areas-wrap">
+        <div class="reveal">
+          <span class="eyebrow">Service area</span>
+          <h2 style="font-size:clamp(32px,4.4vw,48px);margin-top:12px">Serving Austin and nearby cities.</h2>
+          <p style="color:var(--muted);font-size:18px;margin-top:16px">Free estimates within [XX] miles of downtown Austin. Not sure if we cover you? Send your zip code and we'll confirm.</p>
+        </div>
+        <div class="chips reveal">
+          <span>Austin</span><span>Round Rock</span><span>Cedar Park</span><span>Pflugerville</span><span>Georgetown</span><span>Leander</span><span>Lakeway</span><span>Dripping Springs</span><span>Kyle</span><span>Buda</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA band -->
+    <section class="cta" style="padding-bottom:0">
+      <div class="container">
+        <div class="cta-box reveal">
+          <div>
+            <h2>Ready for a floor you'll love walking on?</h2>
+            <p>Book a free on-site assessment. You'll get a written, itemised quote within 24 hours.</p>
+          </div>
+          <div class="btns">
+            <a href="#quote" class="btn btn-light">Get my free quote</a>
+            <a href="tel:+15120000000" class="btn btn-outline" style="color:#fff;border-color:#fff">Call [(512) 000-0000]</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote form -->
+    <section id="quote" class="contact">
+      <div class="container contact-grid">
+        <div class="reveal">
+          <span class="eyebrow">Get a quote</span>
+          <h2 style="font-size:clamp(32px,4.4vw,48px);margin-top:12px">Tell us about your space.</h2>
+          <p style="color:var(--muted);font-size:18px;margin-top:16px">The more detail you share, the more accurate your quote. Photos help too. We'll reply with next steps.</p>
+          <div class="contact-info">
+            <div>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
+              <div><strong>Call us</strong><span>[(512) 000-0000]</span></div>
+            </div>
+            <div>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></span>
+              <div><strong>Email</strong><span>[quotes@yourdomain.com]</span></div>
+            </div>
+            <div>
+              <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+              <div><strong>Hours</strong><span>Mon&ndash;Sat, 7am&ndash;6pm &middot; Sun by appointment</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card reveal">
+          <h3>Request your free quote</h3>
+          <p>No obligation. We'll confirm the details by phone or email.</p>
+          <form id="quote-form" class="stack" novalidate>
+            <div class="grid-2">
+              <div class="field">
+                <label for="name">Full name *</label>
+                <input id="name" name="name" type="text" autocomplete="name" required />
+              </div>
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" />
+              </div>
+            </div>
+            <div class="grid-2">
+              <div class="field">
+                <label for="email">Email *</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+              </div>
+              <div class="field">
+                <label for="zip">Zip code</label>
+                <input id="zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" />
+              </div>
+            </div>
+            <div class="grid-2">
+              <div class="field">
+                <label for="type">Project type</label>
+                <select id="type" name="type">
+                  <option>Garage</option>
+                  <option>Commercial / retail</option>
+                  <option>Warehouse / industrial</option>
+                  <option>Kitchen / food-safe</option>
+                  <option>Repair / resurfacing</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="sqft">Approx. sq ft</label>
+                <input id="sqft" name="sqft" type="number" min="1" inputmode="numeric" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="message">Anything we should know?</label>
+              <textarea id="message" name="message" placeholder="Current floor condition, desired finish, timeline..."></textarea>
+            </div>
+            <button class="btn btn-primary btn-block" type="submit">Request my free quote &rarr;</button>
+            <p class="form-note" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2>Common questions</h2>
+        </div>
+        <div class="faq reveal">
+          <details open>
+            <summary>How long does an epoxy garage floor take?</summary>
+            <p>Most residential garages are finished in 2&ndash;3 days. Commercial and industrial jobs are scheduled around your operation, often after hours or in phases.</p>
+          </details>
+          <details>
+            <summary>Can you apply epoxy over my existing concrete?</summary>
+            <p>In most cases, yes. We assess the slab first, test for moisture, and repair cracks or spalling before coating. Some floors need a moisture-mitigating primer.</p>
+          </details>
+          <details>
+            <summary>Is epoxy slippery?</summary>
+            <p>Not when installed correctly. We add anti-slip aggregate or a textured topcoat, and can match the grip level to your use case.</p>
+          </details>
+          <details>
+            <summary>When can I park or walk on it?</summary>
+            <p>Light foot traffic is usually fine within 24 hours. Vehicles typically wait 72 hours, and heavy equipment needs the full cure window. We confirm the exact timing for your system.</p>
+          </details>
+          <details>
+            <summary>Do you offer a warranty?</summary>
+            <p>Yes. Every install includes a written warranty covering delamination and workmanship. Details come with your quote.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="foot-grid">
+        <div>
+          <a href="#top" class="logo"><span class="logo-mark" aria-hidden="true"></span>Epoxy Co.</a>
+          <p style="max-width:320px">Seamless epoxy flooring for homes and businesses in Austin, TX. Licensed, insured and built to last.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <a href="#services">Garage floors</a>
+          <a href="#services">Commercial</a>
+          <a href="#services">Industrial</a>
+          <a href="#services">Food-safe</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="#process">Our process</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#faq">FAQ</a>
+          <a href="#quote">Contact</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a href="tel:+15120000000">[(512) 000-0000]</a>
+          <a href="#quote">[quotes@yourdomain.com]</a>
+          <span style="display:block;line-height:1.5">[Street address]<br />Austin, TX [zip]</span>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>&copy; <span id="year"></span> Epoxy Co. All rights reserved.</span>
+        <span>Licensed &amp; insured &middot; [TX license #]</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile sticky actions -->
+  <div class="mobile-bar" role="navigation" aria-label="Quick actions">
+    <a href="tel:+15120000000" class="btn btn-outline">Call now</a>
+    <a href="#quote" class="btn btn-primary">Free quote</a>
+  </div>
+
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Reveal-on-scroll (content stays visible if JS is off)
+    document.documentElement.classList.add("js");
+    (function () {
+      const items = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) { items.forEach((el) => el.classList.add("in")); return; }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) { entry.target.classList.add("in"); io.unobserve(entry.target); }
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
+      items.forEach((el) => io.observe(el));
+    })();
+
+    // Mobile nav: a simple full-width dropdown built from the desktop links
+    (function () {
+      const toggle = document.querySelector(".menu-toggle");
+      const nav = document.querySelector(".nav-links");
+      const header = document.querySelector(".nav");
+      const panel = document.createElement("div");
+      panel.id = "mobile-menu";
+      panel.hidden = true;
+      panel.style.cssText = "border-top:1px solid #e3e8f0;background:#fff;padding:12px 20px 20px";
+      panel.innerHTML = nav.innerHTML;
+      panel.querySelectorAll("a").forEach((a) => {
+        a.style.cssText = "display:block;padding:12px 0;font-weight:700;border-bottom:1px solid #eef1f6";
+      });
+      header.appendChild(panel);
+      toggle.addEventListener("click", () => {
+        const open = panel.hidden;
+        panel.hidden = !open;
+        toggle.setAttribute("aria-expanded", String(open));
+        toggle.textContent = open ? "Close" : "Menu";
+      });
+      panel.addEventListener("click", (e) => {
+        if (e.target.tagName === "A") { panel.hidden = true; toggle.textContent = "Menu"; toggle.setAttribute("aria-expanded", "false"); }
+      });
+    })();
+
+    // Before / after slider
+    (function () {
+      const ba = document.getElementById("ba");
+      const range = ba.querySelector("input[type=range]");
+      range.addEventListener("input", () => ba.style.setProperty("--pos", range.value + "%"));
+    })();
+
+    // Shared form handling. Replace the TODO with a POST to your backend or form service.
+    function wireForm(form, note) {
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(form).entries());
+        const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email || "");
+        note.className = "form-note";
+        if (!data.name || !emailOk) {
+          note.classList.add("err");
+          note.textContent = "Please add your name and a valid email so we can reply.";
+          return;
+        }
+        // TODO: send `data` to your endpoint here.
+        note.classList.add("ok");
+        note.textContent = "Thanks, " + data.name.split(" ")[0] + "! We'll be in touch within 24 hours.";
+        form.reset();
+      });
+    }
+    wireForm(document.getElementById("hero-form"), document.querySelector("#hero-form .form-note"));
+    wireForm(document.getElementById("quote-form"), document.querySelector("#quote-form .form-note"));
+  </script>
+</body>
+</html>
