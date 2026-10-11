@@ -296,3 +296,5 @@ try {
 } finally {
   globalThis.fetch = originalFetch;
 }
+
+await import("./test-cli.mjs");

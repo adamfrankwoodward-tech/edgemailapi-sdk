@@ -204,6 +204,10 @@ npx edgemail migrate --suppressions suppressions.csv --apply # explicit suppress
 Migration input accepts the provider-neutral EdgeMail JSON shape plus common
 Instantly aliases (`contacts`, `prospects`, `sequences`, `emails`, `Email`,
 `firstName`, and `companyName`). JSON and quoted/multiline CSV are supported.
+CSV requires unique, nonempty column headers and the same number of fields in
+each row. Subscriber and suppression CSVs require an `email` header; `reason`
+is optional for suppressions. Malformed CSV is rejected in both dry-run and apply
+before any import requests are sent.
 Mailbox credentials and API keys are never imported. Every migration import is
 dry-run by default; `--apply` is the explicit write boundary. Subscriber and
 suppression lists report valid/invalid rows before applying, and imported
