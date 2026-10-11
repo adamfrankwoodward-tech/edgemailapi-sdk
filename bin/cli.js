@@ -35,33 +35,53 @@ function loadKey() {
   if (existsSync(RC)) return JSON.parse(readFileSync(RC, "utf8")).apiKey;
   console.error("No API key. Run `edgemail init` or set EDGEMAIL_API_KEY."); process.exit(1);
 }
-function csv(path) {
+function csv(path, requiredHeaders = []) {
   const source = readFileSync(path, "utf8").replace(/^\uFEFF/, "");
   const rows = [];
   let row = [];
   let field = "";
   let quoted = false;
+  let closed = false;
+  function finishRow() {
+    row.push(field);
+    // Ignore blank lines, but retain explicit empty fields for validation.
+    if (row.length > 1 || closed || row.some((value) => value.trim())) rows.push(row);
+    row = []; field = ""; closed = false;
+  }
   for (let i = 0; i < source.length; i++) {
     const ch = source[i];
-    if (ch === '"') {
-      if (quoted && source[i + 1] === '"') { field += '"'; i++; }
-      else quoted = !quoted;
-    } else if (ch === "," && !quoted) {
-      row.push(field); field = "";
-    } else if (ch === "\n" && !quoted) {
-      row.push(field); field = "";
-      if (row.some((value) => value.trim())) rows.push(row);
-      row = [];
-    } else if (ch !== "\r") {
+    if (quoted) {
+      if (ch === '"') {
+        if (source[i + 1] === '"') { field += '"'; i++; }
+        else { quoted = false; closed = true; }
+      } else field += ch;
+    } else if (ch === ",") {
+      row.push(field); field = ""; closed = false;
+    } else if (ch === "\n" || ch === "\r") {
+      finishRow();
+      if (ch === "\r" && source[i + 1] === "\n") i++;
+    } else if (closed) {
+      throw new Error(`Invalid CSV row ${rows.length + 1}: unexpected character after closing quote.`);
+    } else if (ch === '"') {
+      if (field) throw new Error(`Invalid CSV row ${rows.length + 1}: quote must begin a field.`);
+      quoted = true;
+    } else {
       field += ch;
     }
   }
-  if (field || row.length) {
-    row.push(field);
-    if (row.some((value) => value.trim())) rows.push(row);
-  }
+  if (quoted) throw new Error(`Invalid CSV row ${rows.length + 1}: unclosed quoted field.`);
+  if (field || row.length || closed) finishRow();
   const head = (rows.shift() || []).map((h) => h.trim().toLowerCase());
-  return rows.map((values) => Object.fromEntries(head.map((h, i) => [h, (values[i] || "").trim()])));
+  if (!head.length) throw new Error("Invalid CSV: a header row is required.");
+  if (head.some((h) => !h)) throw new Error("Invalid CSV: empty header names are not allowed.");
+  if (new Set(head).size !== head.length) throw new Error("Invalid CSV: duplicate header names are not allowed.");
+  for (const name of requiredHeaders) {
+    if (!head.includes(name)) throw new Error(`Invalid CSV: ${name} header is required.`);
+  }
+  return rows.map((values, index) => {
+    if (values.length !== head.length) throw new Error(`Invalid CSV row ${index + 2}: expected ${head.length} columns, received ${values.length}.`);
+    return Object.fromEntries(head.map((h, i) => [h, values[i].trim()]));
+  });
 }
 function migrationInput(path) {
   const raw = readFileSync(path, "utf8").replace(/^\uFEFF/, "").trim();
@@ -73,7 +93,7 @@ function migrationInput(path) {
 }
 
 function emailRows(path) {
-  return csv(path).map((row, index) => ({
+  return csv(path, ["email"]).map((row, index) => ({
     row,
     index: index + 2,
     email: String(row.email || "").trim().toLowerCase(),
